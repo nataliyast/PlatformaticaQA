@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -10,7 +11,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-public class Group_qui_quaerit_reperit_Test extends BaseTest {
+public class GroupQQRTest extends BaseTest {
 
     @Test
     public void galinaRuban() throws InterruptedException {
@@ -88,5 +89,32 @@ public class Group_qui_quaerit_reperit_Test extends BaseTest {
         Assert.assertEquals(header.getText(), "Walmart.com - Save Money. Live Better.");
         WebElement logo = driver.findElement(By.cssSelector("[class=\"z_a\"]"));
         Assert.assertEquals(logo.isDisplayed(),true);
+    }
+
+    @Test
+    public void irinaRizvanovaTest() throws InterruptedException{
+
+        WebDriver browser = getDriver();
+        browser.get("https://udemy.com");
+        WebElement name = browser.findElement(By.xpath("//*[@name='q']"));
+        name.sendKeys("Java");
+        name.sendKeys(Keys.ENTER);
+
+        Thread.sleep(3000);
+        WebElement searchResult = browser.findElement(By.xpath("//h1"));
+        String text = searchResult.getText();
+        Assert.assertEquals(text,"10,000 results for “java”");
+
+
+
+    }
+
+    @Test
+    public void guramBautsadze() {
+
+        WebDriver browser = getDriver();
+        browser.get("https://www.platformatica.com/");
+        WebElement gettingStarted = browser.findElement(By.xpath("//h1[text()[normalize-space()='Zero Code Automated SAAS To Revolutionize Your Business']]"));
+        Assert.assertEquals(gettingStarted.getText(), "Zero Code Automated SAAS To Revolutionize Your Business");
     }
 }
